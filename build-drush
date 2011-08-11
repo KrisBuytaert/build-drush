@@ -4,10 +4,10 @@
 #gem install fpm 
 #fpm -s gem -t rpm fpm 
 
-#wget http://ftp.drupal.org/files/projects/drush-7.x-4.4.tar.gz
+wget http://ftp.drupal.org/files/projects/drush-7.x-4.4.tar.gz
 # mkdir -p /usr/local/drush 
 # cd /usr/local/ 
-#tar -vzxf drush-7.x-4.4.tar.gz 
+tar -vzxf drush-7.x-4.4.tar.gz 
 
 fpm -t rpm -s dir  -n drush -v 7.x.4.4 -a noarch  /usr/local/drush/ --post-install  ./drush-postinstall
 
