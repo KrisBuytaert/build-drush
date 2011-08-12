@@ -10,6 +10,6 @@ wget http://ftp.drupal.org/files/projects/drush-7.x-4.4.tar.gz
 tar -vzxf drush-7.x-4.4.tar.gz 
 
 fpm -t rpm -s dir  -n drush -v 7.x.4.4 -a noarch  /usr/local/drush/ --post-install  ./drush-postinstall
-fpm -t deb -s dir  -n drush -v 7.x.4.4 -a all  /usr/local/drush/ --post-install  ./drush-postinstall
+fpm -t deb -s dir  -n drush -v 7.x.4.4 -a all  /usr/local/drush/ 
 
 
