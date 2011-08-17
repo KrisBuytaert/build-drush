@@ -11,7 +11,7 @@ wget http://ftp.drupal.org/files/projects/drush-7.x-4.5.tar.gz
 rm -rf drush
 tar -vzxf drush-7.x-4.5.tar.gz 
 
-fpm -t rpm -s dir  -n drush -v 7.x.4.5 -a noarch  drush/ --post-install  ./drush-postinstall --prefix /usr/local --pre-uninstall ./drush-pre-uninstall
+fpm -t rpm -s dir  -n drush -v 7.x.4.5 -a noarch  drush/ --post-install  ./drush-postinstall --prefix /usr/local --pre-uninstall ./drush-preuninstall
 
 fpm -t deb -s dir  -n drush -v 7.x.4.5 -a all  drush/  --prefix /usr/local
 
