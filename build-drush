@@ -7,18 +7,17 @@
 # * rpm-build
 # * fpm 
 
-DRUPAL_VERSION='7.x'
-DRUSH_VERSION='5.4'
+DRUSH_VERSION='5.x'
 
 # grab drush tarball
-wget http://ftp.drupal.org/files/projects/drush-${DRUPAL_VERSION}-${DRUSH_VERSION}.tar.gz
+wget http://ftp.drupal.org/files/projects/drush-All-versions-${DRUSH_VERSION}.tar.gz
 rm -rf drush
 
 # unpack it
-tar -vzxf drush-${DRUPAL_VERSION}-${DRUSH_VERSION}.tar.gz 
+tar -vzxf drush-All-versions-${DRUSH_VERSION}-dev.tar.gz 
 
 # build .rpm
-fpm -t rpm -s dir -n drush -v ${DRUPAL_VERSION}.${DRUSH_VERSION} -a noarch drush/ --post-install ./drush-postinstall --prefix /usr/local --pre-uninstall ./drush-preuninstall
+fpm -t rpm -s dir -n drush -v ${DRUSH_VERSION} -a noarch drush/ --post-install ./drush-postinstall --prefix /usr/local --pre-uninstall ./drush-preuninstall
 
 # build .deb
-fpm -t deb -s dir -n drush -v ${DRUPAL_VERSION}.${DRUSH_VERSION} -a all drush/ --prefix /usr/local
+fpm -t deb -s dir -n drush -v ${DRUSH_VERSION} -a all drush/ --prefix /usr/local
