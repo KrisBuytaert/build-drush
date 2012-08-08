@@ -8,7 +8,7 @@
 # * fpm 
 
 DRUPAL_VERSION='7.x'
-DRUSH_VERSION='4.5'
+DRUSH_VERSION='5.4'
 
 # grab drush tarball
 wget http://ftp.drupal.org/files/projects/drush-${DRUPAL_VERSION}-${DRUSH_VERSION}.tar.gz
