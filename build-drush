@@ -1,23 +1,24 @@
+# Build drush packages with fpm
+#
+# todo:
+# * Build in Exit codes .. 
+#
+# Requirements:
+# * rpm-build
+# * fpm 
 
-# Build in Exit codes .. 
+DRUPAL_VERSION='7.x'
+DRUSH_VERSION='4.5'
 
-# Prereqs
-#yum install rpm-build
-#gem install fpm 
-#fpm -s gem -t rpm fpm 
-# GET it from git .. not from http ...  
-# 
-wget http://ftp.drupal.org/files/projects/drush-7.x-4.5.tar.gz
-# mkdir -p /usr/local/drush 
-# cd /usr/local/ 
+# grab drush tarball
+wget http://ftp.drupal.org/files/projects/drush-${DRUPAL_VERSION}-${DRUSH_VERSION}.tar.gz
 rm -rf drush
-tar -vzxf drush-7.x-4.5.tar.gz 
 
+# unpack it
+tar -vzxf drush-${DRUPAL_VERSION}-${DRUSH_VERSION}.tar.gz 
 
+# build .rpm
+fpm -t rpm -s dir -n drush -v ${DRUPAL_VERSION}.${DRUSH_VERSION} -a noarch drush/ --post-install ./drush-postinstall --prefix /usr/local --pre-uninstall ./drush-preuninstall
 
-fpm -t rpm -s dir  -n drush -v 7.x.4.5 -a noarch  drush/ --post-install  ./drush-postinstall --prefix /usr/local --pre-uninstall ./drush-preuninstall
-
-
-fpm -t deb -s dir  -n drush -v 7.x.4.5 -a all  drush/  --prefix /usr/local
-
-
+# build .deb
+fpm -t deb -s dir -n drush -v ${DRUPAL_VERSION}.${DRUSH_VERSION} -a all drush/ --prefix /usr/local
