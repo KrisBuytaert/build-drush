@@ -1,4 +1,4 @@
-
+#!/bin/sh
 # Build in Exit codes .. 
 
 # Prereqs
@@ -13,11 +13,11 @@
 #rm -rf drush
 #tar -vzxf drush-7.x-4.5.tar.gz 
 
+EPOCH=`date +%s`
+
+fpm -s pear -t rpm -a all --conflicts drush --iteration 0+${EPOCH} --pear-channel pear.drush.org drush
 
 
-fpm -s pear -t rpm --pear-channel pear.drush.org drush
-
-
-fpm -s pear -t deb --pear-channel pear.drush.org drush
+fpm -s pear -t deb -a all --conflicts drush --iteration 0+${EPOCH} --deb-user root --deb-group root --pear-channel pear.drush.org drush
 
 
