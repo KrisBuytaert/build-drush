@@ -15,9 +15,9 @@
 
 
 
-fpm -s pear -t rpm --pear-channel pear.drush.org drush
+fpm -s pear -t rpm -a all --pear-channel pear.drush.org drush
 
 
-fpm -s pear -t deb --pear-channel pear.drush.org drush
+fpm -s pear -t deb -a all --pear-channel pear.drush.org drush
 
 
